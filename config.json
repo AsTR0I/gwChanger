@@ -1,0 +1,7 @@
+{
+	"hosts": [
+		{"hostname": "voip.cocobri.ru -from 28", "ip": "2.2.2.2"},
+		{"hostname": "voip.cocobri.ru -from 20", "ip": "1.1.1.1"}
+	],
+	"target_hostname": "voip.test"
+}
