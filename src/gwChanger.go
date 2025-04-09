@@ -355,6 +355,7 @@ func printHelpMessage() {
 	fmt.Println("  -lsd N               Set log save days (default 10)")
 }
 
+// https://pkg.go.dev/net/smtp#SendMail
 // send mail
 func sendEmail(subject, body string, config Mail) {
 	from := config.From

@@ -6,6 +6,8 @@
 
 ## Функциональность
 
+### 
+- При изменении в /etc/hosts происходит отправка сообщения на почту из конфига
 ### Командная строка:
 -   **-h, --help** - Показать справку.
 -   **-v, --version** - Показать версию программы.
@@ -44,7 +46,7 @@
 Для установки скрипта на Linux выполните следующую команду:
 
 ```bash
-cd /usr/local && curl -sSL https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
+cd /usr/local && curl https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
 ```
 ### BSD
 ```bash

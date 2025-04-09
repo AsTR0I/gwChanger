@@ -1,5 +1,4 @@
 {
-    "hostname_machine": "astroHost",
     "hosts": [
         { "hostname": "yandex.ru", "ip": "77.88.55.88" },
         { "hostname": "yandex.ru", "ip": "77.88.55.88" }
@@ -8,8 +7,9 @@
     "sipc_path": "",
     "mail": {
         "from": "",
-        "to": "voip@cocobri.ru",
+        "to": "",
         "smtp_server": "",
         "smtp_server_port": ""
-    }
+    },
+    "hostname_machine": ""
 }
