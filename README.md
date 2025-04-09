@@ -2,7 +2,7 @@
 
 ## Описание
 
-**gwChanger** – Представляет собой инструмент для управления записями в файле /etc/hosts.
+**gwChanger** – Представляет собой инструмент ...
 
 ## Функциональность
 
@@ -62,6 +62,9 @@
 cd /usr/local && curl https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
 ```
 ### BSD
+
+Для установки скрипта на BSD выполните следующую команду:
+
 ```bash
 cd /usr/local && /usr/bin/fetch https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
 ```
