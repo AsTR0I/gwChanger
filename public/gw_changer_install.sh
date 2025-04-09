@@ -4,14 +4,15 @@
 echo "🚀 Welcome, I am the gwChanger, starting installation..."
 
 # Determining the OS and architecture
+TIME_STAMP=$(date +"old.%y-%m-%d-%H-%M-%S")
 OS=$(uname -s)
 ARCH=$(uname -m)
-
 echo "🔍 OS detected: $OS"
 echo "🔍 Architecture detected: $ARCH"
 
 # Define the base URL for downloads
 BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/builds"
+# SIPC_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/src/sipc"
 
 if [ "$OS" == "Linux" ]; then
         INSTALL_PATH="/opt/gwChanger"
@@ -113,23 +114,33 @@ echo "✅ Archive successfully extracted."
 # Check if the config exists
 CONFIG_PATH="$INSTALL_PATH/config.json"
 if [ ! -f "$CONFIG_PATH" ]; then
-    echo "❌ config.json config not found. Creating a new config..."
-    echo '{
+echo "❌ config.json config not found. Creating a new config..."
+    cat <<EOF > "$CONFIG_PATH"
+{
+    "hostname_machine": "",
     "hosts": [
         { "hostname": "yandex.ru", "ip": "77.88.55.88" },
         { "hostname": "yandex.ru", "ip": "77.88.55.88" }
     ],
     "target_hostname": "voip.test voip.test2",
-    "sipc_path": ""
-}' > "$CONFIG_PATH"
-    echo "✅ config.json config successfully created."
+    "sipc_path": "",
+    "mail": {
+        "from": "",
+        "to": "voip@cocobri.ru",
+        "smtp_server": "",
+        "smtp_server_port": ""
+    }
+}
+EOF
+echo $CONFIG_PATH
+    echo "✅ config.json created/updated."
 else
-    echo "✅ config.json config already exists."
+    echo "✅ config.json already exists. Skipping creation."
 fi
 
 # Make the file executable
 chmod +x "$INSTALL_PATH/gwChanger"
-chmod +x "$INSTALL_PATH/sipc"
+# chmod +x "$INSTALL_PATH/sipc"
 chmod -R 755 "$INSTALL_PATH"
 echo "✅ Installation complete."
 
@@ -155,4 +166,3 @@ echo "Cleaning up temporary files..."
 rm gwChanger.tar.gz 
 rm install_log.txt
 echo "Cleanup complete, enjoy using the program!"
-cd $INSTALL_PATH
