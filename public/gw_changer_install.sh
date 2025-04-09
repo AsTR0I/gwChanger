@@ -116,7 +116,7 @@ if [ ! -f "$CONFIG_PATH" ]; then
     echo "❌ config.json config not found. Creating a new config..."
     echo '{
     "hosts": [
-        { "hostname": "voip.cocobri.ru", "ip": "185.250.231.88" },
+        { "hostname": "yandex.ru", "ip": "77.88.55.88" },
         { "hostname": "yandex.ru", "ip": "77.88.55.88" }
     ],
     "target_hostname": "voip.test voip.test2",

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Директории
-SRC_DIR="./"
+SRC_DIR="$(pwd)"
+echo $SRC_DIR
 BIN_DIR="../public/bin"
 BUILD_DIR="../public/builds"
 CONFIG_FILE="./config.json"  # Путь к файлу конфигурации
@@ -30,7 +31,7 @@ for PLATFORM in "${PLATFORMS[@]}"; do
         OUTPUT_PATH="${BIN_PATH}/${BIN_NAME}"
         echo "🚀 Компиляция для ${PLATFORM}/${ARCH}..."
 
-        GOOS=$PLATFORM GOARCH=$ARCH go build -o "$OUTPUT_PATH" -ldflags "-s -w -buildvcs=false" "$SRC_DIR"
+        GOOS=$PLATFORM GOARCH=$ARCH go build -o "$OUTPUT_PATH" -ldflags "-s -w" "$SRC_DIR/gwChanger.go"
          if [ $? -eq 0 ]; then
             echo "✅ Компиляция завершена: ${OUTPUT_PATH}"
 
