@@ -114,24 +114,22 @@ echo "✅ Archive successfully extracted."
 # Check if the config exists
 CONFIG_PATH="$INSTALL_PATH/config.json"
 if [ ! -f "$CONFIG_PATH" ]; then
-    echo "❌ config.json config not found. Creating a new config..."
-    cat <<EOF > "$CONFIG_PATH"
-    {
-        "hostname_machine": "",
-        "hosts": [
-            { "hostname": "yandex.ru", "ip": "77.88.55.88" },
-            { "hostname": "yandex.ru", "ip": "77.88.55.88" }
-        ],
-        "target_hostname": "voip.test voip.test2",
-        "sipc_path": "",
-        "mail": {
-            "from": "",
-            "to": "voip@cocobri.ru",
-            "smtp_server": "",
-            "smtp_server_port": ""
-        }
-    }
-    EOF
+echo "❌ config.json config not found. Creating a new config..."
+echo '{
+  "hostname_machine": "",
+  "hosts": [
+    { "hostname": "yandex.ru", "ip": "77.88.55.88" },
+    { "hostname": "yandex.ru", "ip": "77.88.55.88" }
+  ],
+  "target_hostname": "voip.test voip.test2",
+  "sipc_path": "",
+  "mail": {
+    "from": "",
+    "to": "voip@cocobri.ru",
+    "smtp_server": "",
+    "smtp_server_port": ""
+  }
+}' > "$CONFIG_PATH"
 
     echo "✅ config.json config successfully created."
 else
@@ -166,3 +164,22 @@ echo "Cleaning up temporary files..."
 rm gwChanger.tar.gz 
 rm install_log.txt
 echo "Cleanup complete, enjoy using the program!"
+
+
+ cat <<EOF > "./config.json"
+    {
+        "hostname_machine": "",
+        "hosts": [
+            { "hostname": "yandex.ru", "ip": "77.88.55.88" },
+            { "hostname": "yandex.ru", "ip": "77.88.55.88" }
+        ],
+        "target_hostname": "voip.test voip.test2",
+        "sipc_path": "",
+        "mail": {
+            "from": "",
+            "to": "voip@cocobri.ru",
+            "smtp_server": "",
+            "smtp_server_port": ""
+        }
+    }
+    EOF
