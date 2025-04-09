@@ -125,10 +125,10 @@ echo "❌ config.json config not found. Creating a new config..."
     "target_hostname":"a1.cocobri.ru a2.cocobri.ru",
     "sipc_path": "",
     "mail": {
-        "from": "",
+        "from": "voip@cocobri.ru",
         "to": "voip@cocobri.ru",
-        "smtp_server": "",
-        "smtp_server_port": ""
+        "smtp_server": "hmail.cocobri.ru",
+        "smtp_server_port": "25"
     }
 }
 EOF
