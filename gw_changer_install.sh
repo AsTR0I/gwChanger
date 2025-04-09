@@ -115,23 +115,24 @@ echo "✅ Archive successfully extracted."
 CONFIG_PATH="$INSTALL_PATH/config.json"
 if [ ! -f "$CONFIG_PATH" ]; then
 echo "❌ config.json config not found. Creating a new config..."
-echo '{
-  "hostname_machine": "",
-  "hosts": [
-    { "hostname": "yandex.ru", "ip": "77.88.55.88" },
-    { "hostname": "yandex.ru", "ip": "77.88.55.88" }
-  ],
-  "target_hostname": "voip.test voip.test2",
-  "sipc_path": "",
-  "mail": {
-    "from": "",
-    "to": "voip@cocobri.ru",
-    "smtp_server": "",
-    "smtp_server_port": ""
-  }
-}' > "$CONFIG_PATH"
-
-    echo "✅ config.json config successfully created."
+cat <<EOF > "$CONFIG_PATH"
+{
+    "hostname_machine": "",
+    "hosts": [
+        { "hostname": "yandex.ru", "ip": "77.88.55.88" },
+        { "hostname": "yandex.ru", "ip": "77.88.55.88" }
+    ],
+    "target_hostname": "voip.test voip.test2",
+    "sipc_path": "",
+    "mail": {
+        "from": "",
+        "to": "voip@cocobri.ru",
+        "smtp_server": "",
+        "smtp_server_port": ""
+    }
+}
+EOF
+echo "✅ config.json config successfully created."
 else
     echo "✅ config.json config already exists."
 fi
