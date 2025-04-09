@@ -119,10 +119,10 @@ echo "❌ config.json config not found. Creating a new config..."
 {
     "hostname_machine": "",
     "hosts": [
-        { "hostname": "yandex.ru", "ip": "77.88.55.88" },
-        { "hostname": "yandex.ru", "ip": "77.88.55.88" }
+        {"hostname":"77.236.64.115","ip":"77.236.64.115"},
+        {"hostname":"91.240.36.172","ip":"91.240.36.172"}
     ],
-    "target_hostname": "voip.test voip.test2",
+    "target_hostname":"a1.cocobri.ru a2.cocobri.ru",
     "sipc_path": "",
     "mail": {
         "from": "",
