@@ -6,7 +6,7 @@ echo "🚀 Welcome, I am the gwChanger, starting installation..."
 # Determining the OS and architecture
 OS=$(uname -s)
 ARCH=$(uname -m)
-
+TIME_STAMP=$(date +"old.%y-%m-%d-%H-%M-%S")
 echo "🔍 OS detected: $OS"
 echo "🔍 Architecture detected: $ARCH"
 
