@@ -43,6 +43,7 @@
     **to** – to
     **smtp_server** – smtp_server
     **smtp_server_port** – smtp_server_port
+- **hostname_machine** – hostname_machine
 
 ## Логирование
 
