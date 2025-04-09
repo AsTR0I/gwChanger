@@ -132,6 +132,7 @@ echo "❌ config.json config not found. Creating a new config..."
     }
 }
 EOF
+echo $CONFIG_PATH
     echo "✅ config.json created/updated."
 else
     echo "✅ config.json already exists. Skipping creation."
@@ -139,7 +140,7 @@ fi
 
 # Make the file executable
 chmod +x "$INSTALL_PATH/gwChanger"
-chmod +x "$INSTALL_PATH/sipc"
+# chmod +x "$INSTALL_PATH/sipc"
 chmod -R 755 "$INSTALL_PATH"
 echo "✅ Installation complete."
 
