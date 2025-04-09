@@ -36,3 +36,17 @@
 - Формат записи: `YYYY-MM-DD HH:MM:SS - Сообщение`.
 - Если лог-файл отсутствует, он создаётся автоматически.
 - Логи старше 10 дней удаляются автоматически.
+
+## Установка
+
+## Linux
+
+Для установки скрипта на Linux выполните следующую команду:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
+```
+### BSD
+```bash
+cd /usr/local && /usr/bin/fetch https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
+```

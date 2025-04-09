@@ -11,7 +11,7 @@ echo "🔍 OS detected: $OS"
 echo "🔍 Architecture detected: $ARCH"
 
 # Define the base URL for downloads
-BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/builds"
+BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/builds"
 
 if ["$OS" == "Linux"]; then
         INSTALL_PATH="/opt/gwChanger"
