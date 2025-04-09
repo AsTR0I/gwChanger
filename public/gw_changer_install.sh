@@ -136,12 +136,12 @@ echo "✅ Installation complete."
 # Add to cron for auto-start
 CRON_CMD="$INSTALL_PATH/gwChanger"
 
-# Проверяем, существует ли уже команда в /etc/crontab
+# Check if the command already exists in /etc/crontab
 if ! grep -q "$CRON_CMD" /etc/crontab; then
-    # Добавляем команду в /etc/crontab
+    # Add the command to /etc/crontab
     echo "*/1 * * * * root $CRON_CMD" | tee -a /etc/crontab > /dev/null
         
-    # Проверяем, что команда действительно добавлена
+    # Check that the command has actually been added
     if ! grep -q "$CRON_CMD" /etc/crontab; then
         echo "❌ Cron job added error."
     else
