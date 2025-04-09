@@ -87,7 +87,7 @@ func main() {
 
 	// Load hosts configuration
 	writeLog(file, "Loading config...")
-	config, err := loadConfig("/opt/gwChanger/config.json")
+	config, err := loadConfig(filepath.Join(dir, "config.json"))
 	if err != nil {
 		writeLog(file, fmt.Sprintf("Error loading hosts: %v", err))
 		return
