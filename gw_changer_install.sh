@@ -14,7 +14,7 @@ echo "🔍 Architecture detected: $ARCH"
 BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/builds"
 # SIPC_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/src/sipc"
 
-if ["$OS" == "Linux"]; then
+if [ "$OS" == "Linux" ]; then
         INSTALL_PATH="/opt/gwChanger"
         BACKUP_DIR="$INSTALL_PATH/$TIME_STAMP"
         command -v curl >/dev/null 2>&1 || { echo "❌ curl utility is not installed. Install curl and try again."; exit 1; }
@@ -115,7 +115,7 @@ echo "✅ Archive successfully extracted."
 CONFIG_PATH="$INSTALL_PATH/config.json"
 if [ ! -f "$CONFIG_PATH" ]; then
 echo "❌ config.json config not found. Creating a new config..."
-cat <<EOF > "$CONFIG_PATH"
+    cat <<EOF > "$CONFIG_PATH"
 {
     "hostname_machine": "",
     "hosts": [
@@ -132,9 +132,9 @@ cat <<EOF > "$CONFIG_PATH"
     }
 }
 EOF
-echo "✅ config.json config successfully created."
+    echo "✅ config.json created/updated."
 else
-    echo "✅ config.json config already exists."
+    echo "✅ config.json already exists. Skipping creation."
 fi
 
 # Make the file executable
