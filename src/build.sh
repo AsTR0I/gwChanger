@@ -44,16 +44,7 @@ for PLATFORM in "${PLATFORMS[@]}"; do
 
             echo "📦 Archiving to ${BUILD_ARCHIVE}..."
             # Create a new archive with the binary
-           # Check if sipc exists and add it together with gwChanger
-            if [ -f "$SIPC_BIN" ]; then
-                # Create the archive with both gwChanger and sipc
-                tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME" "$(basename "$SIPC_BIN")"
-                echo "📦 Both gwChanger and sipc added to the archive."
-            else
-                # If sipc does not exist, just add gwChanger
-                tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME"
-                echo "⚠️ sipc not found, only gwChanger added to the archive."
-            fi
+            tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME"
         else
             echo "❌ Compilation error for ${PLATFORM}/${ARCH}"
         fi
