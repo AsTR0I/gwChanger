@@ -165,22 +165,3 @@ echo "Cleaning up temporary files..."
 rm gwChanger.tar.gz 
 rm install_log.txt
 echo "Cleanup complete, enjoy using the program!"
-
-
- cat <<EOF > "./config.json"
-    {
-        "hostname_machine": "",
-        "hosts": [
-            { "hostname": "yandex.ru", "ip": "77.88.55.88" },
-            { "hostname": "yandex.ru", "ip": "77.88.55.88" }
-        ],
-        "target_hostname": "voip.test voip.test2",
-        "sipc_path": "",
-        "mail": {
-            "from": "",
-            "to": "voip@cocobri.ru",
-            "smtp_server": "",
-            "smtp_server_port": ""
-        }
-    }
-    EOF
