@@ -44,7 +44,7 @@
 Для установки скрипта на Linux выполните следующую команду:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
+cd /usr/local && curl -sSL https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/gw_changer_install.sh -o gw_changer_install.sh && chmod +x gw_changer_install.sh && sh gw_changer_install.sh
 ```
 ### BSD
 ```bash

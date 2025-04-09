@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net"
+	"net/smtp"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -43,9 +44,18 @@ type Host struct {
 }
 
 type Config struct {
-	Hosts          []Host `json:"hosts"`
-	TargetHostname string `json:"target_hostname"`
-	SipcPath       string `json:"sipc_path"`
+	Hosts           []Host `json:"hosts"`
+	TargetHostname  string `json:"target_hostname"`
+	SipcPath        string `json:"sipc_path"`
+	Mail            Mail   `json:"mail"`
+	HostMachineName string `json:"hostname_machine"`
+}
+
+type Mail struct {
+	From           string `json:"from"`
+	To             string `json:"to"`
+	SMTPServer     string `json:"smtp_server"`
+	SMTPServerPort string `json:"smtp_server_port"`
 }
 
 func main() {
@@ -202,7 +212,7 @@ func main() {
 
 	// Update /etc/hosts if the best host was found
 	if bestHostFound {
-		changeEtcHosts(file, bestIP, config.TargetHostname)
+		changeEtcHosts(file, bestIP, config.TargetHostname, config)
 	}
 }
 
@@ -233,7 +243,7 @@ func saveConfig(filePath string, config Config) {
 }
 
 // Update /etc/hosts with the new IP for the target hostname
-func changeEtcHosts(file *os.File, newIP string, targetHostname string) {
+func changeEtcHosts(file *os.File, newIP string, targetHostname string, config Config) {
 	data, err := ioutil.ReadFile(hostsFile)
 	if err != nil {
 		return
@@ -271,6 +281,10 @@ func changeEtcHosts(file *os.File, newIP string, targetHostname string) {
 	if err != nil {
 		writeLog(file, fmt.Sprintf("Error writing to %s: %v", hostsFile, err))
 	}
+
+	subject := fmt.Sprintf("[gwChanger][%s] Target changed to %s", config.HostMachineName, newIP)
+	body := fmt.Sprintf("The target hostname '%s' has been updated to IP address: %s", targetHostname, newIP)
+	sendEmail(subject, body, config.Mail)
 }
 
 // Log a message to the log file
@@ -339,4 +353,26 @@ func printHelpMessage() {
 	fmt.Println("  -h, --help           Show help message")
 	fmt.Println("  -v, --version        Show version")
 	fmt.Println("  -lsd N               Set log save days (default 10)")
+}
+
+// send mail
+func sendEmail(subject, body string, config Mail) {
+	from := config.From
+	to := config.To
+	smtpHost := config.SMTPServer
+	smtpPort := config.SMTPServerPort
+
+	if smtpPort == "" {
+		smtpPort = "25"
+	}
+
+	// Email message
+	msg := fmt.Sprintf("From: %s\nTo: %s\nSubject: %s\n\n%s", from, to, subject, body)
+
+	err := smtp.SendMail(smtpHost+":"+smtpPort, nil, from, []string{to}, []byte(msg))
+	if err != nil {
+		fmt.Println("Error sending email:", err)
+	} else {
+		fmt.Println("Email sent successfully")
+	}
 }

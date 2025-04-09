@@ -12,6 +12,7 @@ echo "🔍 Architecture detected: $ARCH"
 
 # Define the base URL for downloads
 BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/builds"
+# SIPC_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/src/sipc"
 
 if ["$OS" == "Linux"]; then
         INSTALL_PATH="/opt/gwChanger"

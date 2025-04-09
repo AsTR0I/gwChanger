@@ -5,7 +5,7 @@ SRC_DIR="$(pwd)"
 BIN_DIR="../public/bin"
 BUILD_DIR="../public/builds"
 CONFIG_FILE="./config.json"
-SIPC_BIN="./sipc"
+SIPC_BIN="$(pwd)/sipc"
 
 ARCHITECTURES=("amd64" "386")
 PLATFORMS=("linux" "freebsd")
@@ -35,15 +35,24 @@ for PLATFORM in "${PLATFORMS[@]}"; do
             echo "✅ Compilation finished: ${OUTPUT_PATH}"
 
             BUILD_ARCHIVE="${BUILD_PATH}/gwChanger.tar.gz"
-            echo "📦 Archiving to ${BUILD_ARCHIVE}..."
-            tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME"
 
-            # Add the sipc program to the archive if it exists
+            # Check if the archive exists, and remove it if it does
+            if [ -f "$BUILD_ARCHIVE" ]; then
+                echo "⚠️ Archive already exists. Removing the old one."
+                rm "$BUILD_ARCHIVE"
+            fi
+
+            echo "📦 Archiving to ${BUILD_ARCHIVE}..."
+            # Create a new archive with the binary
+           # Check if sipc exists and add it together with gwChanger
             if [ -f "$SIPC_BIN" ]; then
-                echo "📦 Adding sipc to the archive..."
-                tar -rzvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$(basename "$SIPC_BIN")"
+                # Create the archive with both gwChanger and sipc
+                tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME" "$(basename "$SIPC_BIN")"
+                echo "📦 Both gwChanger and sipc added to the archive."
             else
-                echo "⚠️ sipc program not found, skipping addition to the archive."
+                # If sipc does not exist, just add gwChanger
+                tar -czvf "$BUILD_ARCHIVE" -C "$BIN_PATH" "$BIN_NAME"
+                echo "⚠️ sipc not found, only gwChanger added to the archive."
             fi
         else
             echo "❌ Compilation error for ${PLATFORM}/${ARCH}"
