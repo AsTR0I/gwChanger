@@ -22,7 +22,14 @@
         { "hostname": "yandex.ru", "ip": "77.88.55.88" }
     ],
     "target_hostname": "voip.test voip.test2",
-    "sipc_path": ""
+    "sipc_path": "",
+    "mail": {
+        "from": "",
+        "to": "",
+        "smtp_server": "",
+        "smtp_server_port": ""
+    },
+    "hostname_machine": ""
 }
 ```
 
@@ -31,6 +38,11 @@
     **hosts.ip** – IP-адрес
 - **target_hostname** – Строка, содержащая через пробел целевые хосты.
 - **sipc_path** – Путь к исполняемому файлу sipc (опционально). Если путь не указан, программа попытается запустить sipc из своей директории или из системного пути.
+- **mail**:
+    **from** – from
+    **to** – to
+    **smtp_server** – smtp_server
+    **smtp_server_port** – smtp_server_port
 
 ## Логирование
 
