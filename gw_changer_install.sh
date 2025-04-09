@@ -13,7 +13,7 @@ echo "🔍 Architecture detected: $ARCH"
 # Define the base URL for downloads
 BASE_URL="https://raw.githubusercontent.com/AsTR0I/gwChanger/refs/heads/main/public/builds"
 
-if [ "$OS" == "Linux" ]; then
+if ["$OS" == "Linux"]; then
         INSTALL_PATH="/opt/gwChanger"
         BACKUP_DIR="$INSTALL_PATH/$TIME_STAMP"
         command -v curl >/dev/null 2>&1 || { echo "❌ curl utility is not installed. Install curl and try again."; exit 1; }
